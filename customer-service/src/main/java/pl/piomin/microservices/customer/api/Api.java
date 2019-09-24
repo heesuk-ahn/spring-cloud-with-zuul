@@ -48,6 +48,7 @@ public class Api {
 	public Customer findById(@PathVariable("id") Integer id) {
 		logger.info(String.format("Customer.findById(%s)", id));
 		Customer customer = customers.stream().filter(it -> it.getId().intValue()==id.intValue()).findFirst().get();
+		//accountClient
 		List<Account> accounts =  accountClient.getAccounts(id);
 		customer.setAccounts(accounts);
 		return customer;
